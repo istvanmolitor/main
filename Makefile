@@ -1,4 +1,4 @@
-.PHONY: help start stop start-backend stop-backend start-frontend stop-frontend clone-backend install-backend clone-frontend install-frontend
+.PHONY: help start stop start-backend stop-backend start-frontend stop-frontend clone-backend install-backend clone-frontend install-frontend clone install
 
 # Default target
 .DEFAULT_GOAL := help
@@ -9,6 +9,10 @@ help: ## Mutasd a segítséget
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 ## Telepítés
+clone: clone-backend clone-frontend ## Backend és Frontend repository klónozása
+
+install: install-backend install-frontend ## Backend és Frontend projekt telepítése
+
 clone-backend: ## Backend repository klónozása
 	cd .. && git clone git@github.com:istvanmolitor/backend.git
 
