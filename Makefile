@@ -1,4 +1,4 @@
-.PHONY: help start stop start-backend stop-backend start-frontend stop-frontend clone-backend install-backend
+.PHONY: help start stop start-backend stop-backend start-frontend stop-frontend clone-backend install-backend clone-frontend install-frontend
 
 # Default target
 .DEFAULT_GOAL := help
@@ -14,6 +14,12 @@ clone-backend: ## Backend repository klónozása
 
 install-backend: ## Backend projekt telepítése
 	cd ../backend && composer install && npm install
+
+clone-frontend: ## Frontend repository klónozása
+	cd .. && git clone git@github.com:istvanmolitor/frontend.git
+
+install-frontend: ## Frontend projekt telepítése
+	cd ../frontend && npm install
 
 ## Projekt kezelés
 start: start-backend start-frontend ## Backend és Frontend indítása
