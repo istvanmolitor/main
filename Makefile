@@ -1,4 +1,4 @@
-.PHONY: help start stop start-backend stop-backend start-frontend stop-frontend
+.PHONY: help start stop start-backend stop-backend start-frontend stop-frontend clone-backend install-backend
 
 # Default target
 .DEFAULT_GOAL := help
@@ -7,6 +7,13 @@
 help: ## Mutasd a segítséget
 	@echo "Elérhető parancsok:"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+## Telepítés
+clone-backend: ## Backend repository klónozása
+	cd .. && git clone git@github.com:istvanmolitor/backend.git
+
+install-backend: ## Backend projekt telepítése
+	cd ../backend && composer install && npm install
 
 ## Projekt kezelés
 start: start-backend start-frontend ## Backend és Frontend indítása
