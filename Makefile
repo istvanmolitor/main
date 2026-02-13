@@ -1,4 +1,4 @@
-.PHONY: help start stop start-backend stop-backend start-frontend stop-frontend clone-backend install-backend clone-frontend install-frontend clone install
+.PHONY: help start stop start-backend stop-backend start-frontend stop-frontend clone-backend install-backend clone-frontend install-frontend clone install commit
 
 # Default target
 .DEFAULT_GOAL := help
@@ -41,4 +41,9 @@ start-frontend: ## Frontend dev szerver indítása
 
 stop-frontend: ## Frontend dev szerver leállítása
 	@echo "Használd Ctrl+C-t a frontend dev szerver leállításához"
+
+## Git művletek
+commit: ## Backend és Frontend projektek és csomagjaik commit-olása
+	./commit.sh
+
 
