@@ -88,6 +88,8 @@ BACKEND_PACKAGES=(
     "media"
     "menu"
     "user"
+    "rss-watcher"
+    "article-scraper"
 )
 
 for package in "${BACKEND_PACKAGES[@]}"; do
@@ -110,6 +112,8 @@ FRONTEND_PACKAGES=(
     "vue-media"
     "vue-menu"
     "vue-user"
+    "vue-rss-watcher"
+    "vue-article-scraper"
 )
 
 for package in "${FRONTEND_PACKAGES[@]}"; do
