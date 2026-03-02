@@ -51,7 +51,7 @@ commit_project() {
         echo -e "${BLUE}Push changes? (y/N):${NC}"
         read -r push_answer
 
-        if [[ "$push_answer" =~ ^[Yy]$ ]]; then
+        if [ "$push_answer" = "y" ] || [ "$push_answer" = "Y" ]; then
             git push
             if [ $? -eq 0 ]; then
                 echo -e "${GREEN}✓ Pushed ${project_name}${NC}"
@@ -67,7 +67,7 @@ commit_project() {
 }
 
 # Főkönyvtár meghatározása
-MAIN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MAIN_DIR="$(cd "$(dirname "$0")" && pwd)"
 WORKSPACE_DIR="$(dirname "$MAIN_DIR")"
 BACKEND_DIR="$WORKSPACE_DIR/backend"
 FRONTEND_DIR="$WORKSPACE_DIR/frontend"
@@ -81,18 +81,9 @@ echo ""
 echo -e "${BLUE}═══ BACKEND PACKAGES ══════════════════════${NC}"
 echo ""
 
-BACKEND_PACKAGES=(
-    "admin"
-    "cms"
-    "language"
-    "media"
-    "menu"
-    "user"
-    "rss-watcher"
-    "article-scraper"
-)
+BACKEND_PACKAGES="admin cms language media menu user rss-watcher article-scraper setting theme"
 
-for package in "${BACKEND_PACKAGES[@]}"; do
+for package in $BACKEND_PACKAGES; do
     commit_project "$BACKEND_DIR/packages/$package" "Backend Package: $package"
 done
 
@@ -105,18 +96,9 @@ commit_project "$BACKEND_DIR" "Backend"
 echo -e "${BLUE}═══ FRONTEND PACKAGES ═════════════════════${NC}"
 echo ""
 
-FRONTEND_PACKAGES=(
-    "vue-admin"
-    "vue-cms"
-    "vue-language"
-    "vue-media"
-    "vue-menu"
-    "vue-user"
-    "vue-rss-watcher"
-    "vue-article-scraper"
-)
+FRONTEND_PACKAGES="vue-admin vue-cms vue-language vue-media vue-menu vue-user vue-rss-watcher vue-article-scraper vue-theme"
 
-for package in "${FRONTEND_PACKAGES[@]}"; do
+for package in $FRONTEND_PACKAGES; do
     commit_project "$FRONTEND_DIR/src/packages/$package" "Frontend Package: $package"
 done
 
