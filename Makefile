@@ -37,7 +37,7 @@ stop-backend: ## Backend leállítása (Docker konténerek leállítása)
 	cd ../backend && $(MAKE) down
 
 start-frontend: ## Frontend dev szerver indítása
-	cd ../frontend && $(MAKE) start
+	cd ../frontend && npm run dev
 
 stop-frontend: ## Frontend dev szerver leállítása
 	@echo "Használd Ctrl+C-t a frontend dev szerver leállításához"
